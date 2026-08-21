@@ -13,6 +13,12 @@ export default defineConfig({
     server: { entry: "server" },
   },
   nitro: {
-    preset: process.env.VERCEL ? "vercel" : (process.env.NITRO_PRESET || undefined),
+    preset: process.env.VERCEL ? "vercel" : process.env.NITRO_PRESET || undefined,
+    inlineDynamicImports: true,
+    rollupConfig: {
+      output: {
+        inlineDynamicImports: true,
+      },
+    },
   },
 });
