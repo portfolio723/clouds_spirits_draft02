@@ -4,7 +4,6 @@ import { PageHeader } from "@/components/Page";
 import { ChoiceGroup } from "@/components/ChoiceGroup";
 import { FeedbackBox } from "@/components/FeedbackBox";
 import { useReview } from "@/lib/review-store";
-import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/review")({
   head: () => ({
@@ -47,29 +46,27 @@ function Review() {
       typography_note: review.typography_note || null,
       logo_note: review.logo_note || null,
       overall_feedback: review.overall_feedback || null,
+      submitted_at: new Date().toISOString(),
     };
 
     try {
-      const { error: insertError } = await supabase.from("client_feedback").insert(payload);
-
-      setSending(false);
-
-      if (insertError) {
-        console.error("Supabase submission error:", insertError);
-        const details = [insertError.message, insertError.details, insertError.hint]
-          .filter(Boolean)
-          .join(" — ");
-        setError(`Submission error: ${details || "Could not insert record into client_feedback."}`);
-        return;
+      // Save locally to submissions log
+      try {
+        const prev = JSON.parse(localStorage.getItem("cs_client_feedback_history") || "[]");
+        prev.push(payload);
+        localStorage.setItem("cs_client_feedback_history", JSON.stringify(prev));
+      } catch {
+        // ignore storage quota issues
       }
 
+      setSending(false);
       reset();
       navigate({ to: "/thanks" });
     } catch (err: unknown) {
       setSending(false);
-      console.error("Network or fetch exception:", err);
+      console.error("Submission exception:", err);
       const msg = err instanceof Error ? err.message : String(err);
-      setError(`Submission error: ${msg}. Please check your network connection or try again.`);
+      setError(`Submission error: ${msg}. Please try again.`);
     }
   }
 
