@@ -1,9 +1,4 @@
 import heroImg from "@/assets/WA.png";
-import s1 from "@/assets/s1.png";
-import s2 from "@/assets/s2.png";
-import s3 from "@/assets/s3.png";
-import s4 from "@/assets/s4.png";
-import s5 from "@/assets/s5.png";
 import s6 from "@/assets/s6.png";
 
 export const heroImage = heroImg;
@@ -69,7 +64,7 @@ export const logoAssets: LogoAsset[] = [
     index: "01",
     title: "Logo Application 01",
     description: "Logo variation and application showcase 01.",
-    image: s5,
+    image: s6,
     versionTag: "version 01",
   },
   {
@@ -77,7 +72,7 @@ export const logoAssets: LogoAsset[] = [
     index: "02",
     title: "Logo Application 02",
     description: "Logo variation and application showcase 02.",
-    image: s5,
+    image: s6,
     versionTag: "version 02",
   },
   {
@@ -85,7 +80,7 @@ export const logoAssets: LogoAsset[] = [
     index: "03",
     title: "Logo Application 03",
     description: "Logo variation and application showcase 03.",
-    image: s5,
+    image: s6,
     versionTag: "version 03",
   },
   {
@@ -93,7 +88,7 @@ export const logoAssets: LogoAsset[] = [
     index: "04",
     title: "Logo Application 04",
     description: "Logo variation and application showcase 04.",
-    image: s3,
+    image: s6,
     versionTag: "version 04",
   },
   {
@@ -101,7 +96,7 @@ export const logoAssets: LogoAsset[] = [
     index: "05",
     title: "Logo Application 05",
     description: "Logo variation and application showcase 05.",
-    image: s4,
+    image: s6,
     versionTag: "version 05",
   },
   {
@@ -117,7 +112,7 @@ export const logoAssets: LogoAsset[] = [
     index: "07",
     title: "Logo Application 07",
     description: "Logo variation and application showcase 07.",
-    image: s1,
+    image: s6,
     versionTag: "version 07",
   },
   {
@@ -125,7 +120,7 @@ export const logoAssets: LogoAsset[] = [
     index: "08",
     title: "Logo Application 08",
     description: "Logo variation and application showcase 08.",
-    image: s2,
+    image: s6,
     versionTag: "version 08",
   },
 ];
